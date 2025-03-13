@@ -1,13 +1,10 @@
-# Use the official Ollama image as the base
 FROM ollama/ollama:latest
 
-# Set environment variables for the Ollama model and API configuration
-ENV OLLAMA_MODEL=mistral
-ENV OLLAMA_API_PORT=11434
-ENV OLLAMA_API_HOST=0.0.0.0
+# Create a directory for models
+RUN mkdir -p /root/.ollama/models
 
-# Expose the port for the API to communicate externally
+# Expose the Ollama API port
 EXPOSE 11434
 
-# Run Ollama in headless mode, serving the Mistral model
-CMD ["ollama", "serve", "--model", "mistral", "--host", "0.0.0.0", "--port", "11434"]
+# Start Ollama and pull the Mistral model
+CMD ["sh", "-c", "ollama serve & sleep 10 && ollama pull mistral && tail -f /dev/null"]

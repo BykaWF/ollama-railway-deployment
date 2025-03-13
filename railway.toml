@@ -1,0 +1,13 @@
+[build]
+builder = "dockerfile"
+
+[deploy]
+healthcheckPath = "/api/health"
+healthcheckTimeout = 300
+restartPolicyType = "on-failure"
+restartPolicyMaxRetries = 5
+
+[http]
+routes = [
+  { path = "/*", method = "*" }
+]

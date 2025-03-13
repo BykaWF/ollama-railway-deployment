@@ -1,0 +1,9 @@
+{
+    "volumes": [
+      {
+        "name": "ollama-models",
+        "mountPath": "/root/.ollama/models",
+        "size": 20
+      }
+    ]
+  }
